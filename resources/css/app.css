@@ -66,15 +66,11 @@ h1 {
 }
 
 .textfields {
+    width: 40vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     gap: 12px;
-}
-
-.textfield {
-    width: 200px;
 }
 
 .textfield-and-btn {
@@ -181,4 +177,62 @@ main {
     .navigation {
         padding: 3px 10vh 4px 10vh;
     }
+}
+
+/* contact form */
+
+/* section form */
+
+.section-contact-form {
+    display: none;
+    padding-top: 6rem;
+    font-family: "Inter", sans-serif;
+    border-bottom: 1px solid #dfe1e6;
+}
+
+.contact-form-h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #172b4d;
+    text-align: center;
+    line-height: 2.5rem;
+    padding: 0 2rem;
+}
+
+.contact-form {
+    border-bottom: 1px solid #dfe1e6;
+    padding: 0 2rem 2rem 2rem;
+    margin-top: 3rem;
+    gap: 2.5rem;
+    border: none;
+}
+
+.form-input {
+    width: 80vw;
+    border: none;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-bottom: 1px solid #dbd8d7;
+}
+
+.errormessage {
+    color: red;
+}
+
+.textarea-form {
+    background: #fbf8f7;
+}
+
+.lastname {
+    display: none;
+}
+
+.button-action {
+    justify-content: center;
+    margin: 12px;
+}
+
+.textfielden {
+    width: 400px !important;
+    align-items: start;
 }

@@ -137,6 +137,7 @@ const pageHeaderSection = document.querySelector(".page-header");
 const addNewBtn = document.querySelector(".nav-btn-add");
 const addNewNovelsSection = document.querySelector(".textfield-and-btn");
 
+
 function showList() {
     novelListSection.style.display = "block";
     addNewNovelSection.style.display = "none";
@@ -212,10 +213,9 @@ function forget() {
 
 function openMain() {
     if (emailField.value === "najib" && passwordField.value === "123") {
+        loginFOrm.style.display = "none";
         getWraper.style.display = "block";
         headerPage.style.display = "block";
-        loginFOrm.style.display = "none";
-        // document.body.style.overflow = "auto";
     } else {
         errorMassege.innerHTML = `password or username is incorrect`;
     }
