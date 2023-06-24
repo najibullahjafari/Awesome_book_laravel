@@ -1,216 +1,833 @@
-body {
-    background-color: rgb(255, 255, 255) !important;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+* {
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none !important;
+    list-style: none;
+}
+:root {
+    --color: whitesmoke;
+    --back: #333;
+    --hov: #3498db;
+    --dark: #939393;
+    --submit: rgb(180, 255, 155);
+    --submitHover: rgb(173, 225, 155);
+    --delete: rgb(173, 3, 10);
+    --deleteHover: rgb(150, 30, 30);
+}
+html::-webkit-scrollbar {
+    width: 10px;
+    background-color: black;
+}
+html::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 5px;
+}
+html::-webkit-scrollbar-thumb:hover {
+    background-color: var(--dark);
+}
+html {
+    scroll-behavior: smooth;
 }
 
-h1 {
-    justify-content: center;
-    text-align: center;
-}
-
-/* Nav bar */
-
-.header-public {
-    display: none;
-}
-
-.navigation {
-    display: grid;
-    grid-template-columns: 6fr 1fr 1fr 1fr;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 3px 10px;
-    gap: 5px;
-    overflow: auto;
-    border-radius: 0;
-    background-color: #dcd9d9;
-}
-
-.wrapper {
-    min-height: 100vh;
-    display: none;
-    flex-direction: column;
-}
-
-.dispay-data {
-    margin-right: 12px;
-    text-align: end;
-}
-
-/* login form */
-
-/* .form-reset {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-} */
-
-.btn-reset {
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-}
-
-.error-password {
-    color: #ff6161;
-}
-
-.forget-password {
-    display: none;
-}
-
-/* BOOK LISTS */
-
-#booklist {
-    padding: 0 !important;
-    min-height: 200px;
-}
-
-.book-item {
-    background-color: #726f6f;
-    color: #fff;
-    padding: 5px;
-    margin: 2px !important;
+/* style for Menu */
+.menuNav {
     display: flex;
     flex-direction: row;
+    background-color: var(--back);
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100px;
+    max-height: 100px;
+    align-items: center;
     justify-content: space-between;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0px;
+    z-index: 1000;
 }
-
-.book-item:nth-child(even) {
-    background-color: #fff;
-    color: #000;
+.menuNav #logo {
+    color: var(--color);
+    font-size: 25px;
+    margin-left: 10px;
 }
-
-/* ADD BOOKS CONTAINER */
-
-.border {
-    border: 1px solid #000 !important;
-    margin-bottom: 12px !important;
+.menuNav #icon {
+    display: none;
 }
-
-.textfields {
+.menuNav .menuUl {
+    display: inherit;
+}
+.menuNav .menuUl li {
+    margin-right: 15px;
+}
+.menuNav .menuUl li a {
+    color: var(--color);
+    font-size: 20px;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    padding: 7px 10px;
+    border-radius: 3px;
+}
+.menuNav .menuUl li.active a,
+.menuNav .menuUl li a:hover {
+    border: 1px solid whitesmoke;
+    transition: 0.3s;
+}
+/* menu responsible */
+@media (max-width: 992px) {
+    .menuNav #logo {
+        font-size: 20px;
+    }
+    .menuNav .menuUl li a {
+        font-size: 17px;
+    }
+}
+@media (max-width: 800px) {
+    .menuNav #icon {
+        display: flex;
+        color: var(--color);
+        font-size: 25px;
+        margin-right: 5px;
+    }
+    .menuNav #icon:hover {
+        cursor: pointer;
+    }
+    .menuNav .menuUl {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--back);
+        top: 100px;
+        left: -1000px;
+        max-height: 100%;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        flex-flow: column;
+        transition: all 0.5s;
+    }
+    .menuNav .menuUl li {
+        line-height: 20px;
+        margin-top: 20px;
+        display: inherit;
+        justify-content: center;
+    }
+    .menuNav .menuUl li.active a,
+    .menuNav .menuUl li a:hover {
+        border: none;
+        background-color: var(--hov);
+    }
+    .menuNav .menuUl.show {
+        left: 0px;
+    }
+}
+/* for Employee Pages */
+#employee #icon {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
 }
-
-.textfield {
-    width: 200px;
-}
-
-.textfield-and-btn {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 12px;
-    padding-top: 50px;
-}
-
-.add-book-btn {
-    display: flex;
-    flex-direction: column;
-    border-top: 2px black;
-    margin: 24px;
-    padding: 12px;
-}
-
-.textfield-and-bt {
-    justify-content: flex-end;
-}
-
-.btn-primary {
-    margin-left: 138px;
-}
-
-.container {
-    background-color: #dcd9d9;
-    backdrop-filter: none;
-    overflow: auto;
-    border-radius: 24px;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    height: 85vh;
+#employee ul {
+    position: fixed;
     width: 100%;
-    margin-top: 30px 1px !important;
+    height: 100vh;
+    max-height: 100%;
+    background-color: var(--back);
+    top: 100px;
+    left: -100000px;
+    max-height: 100%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-flow: column;
+    transition: all 0.5s;
+    overflow: auto;
+}
+#employee ul li {
+    line-height: 20px;
+    margin-top: 15px;
+    display: inherit;
+    justify-content: center;
+}
+#employee ul li.active a,
+nav ul li a:hover {
+    border: none;
+    color: var(--hov);
+}
+#employee ul.show {
+    left: 0px;
+}
+@media (ma-width: 768px) {
+    #employee ul li {
+        line-height: 10px;
+        margin-top: 10px;
+    }
+}
+.cont {
+    min-width: 100%;
+    max-width: 100%;
+    /* min-height: 100vh; */
+    max-height: 100%;
+    /* background-image: url("image/building.jpg"); */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cont label {
+    font-size: 32px;
+    font-family: georgia;
+    color: var(--back);
+}
+#underline {
+    min-width: 30%;
+    max-width: 30%;
+    min-height: 8px;
+    max-height: 8px;
+    border-radius: 20px;
+    background-color: var(--back);
+    display: none;
 }
 
-.btn-nav {
-    background-color: transparent;
-    cursor: pointer;
-    color: #000;
-    text-decoration: none;
+.article {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-
-.btn.clicked {
-    color: blue;
-    text-decoration: none;
-}
-
-.awesome-book-list {
+.article div {
+    width: 100%;
+    height: 100vh;
+    max-height: 100%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+    -ms-flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.article div div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    max-width: 50%;
+    height: 80%;
+    max-height: 80%;
+    margin: 2% 3%;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.3);
+    border: 1px solid var(--color);
+    border-radius: 20px;
+}
+.article div div:hover {
+    transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    -webkit-transform: translateY(5px);
+    transition: 5px all linear;
 }
 
-/* navagation */
-
-.partner-container {
-    border-left: 2px solid #000;
+.article div #departement {
+    background-image: url("image/building1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.article div #teacher {
+    background-image: url("image/building2.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.article div #hacking {
+    background-image: url("image/building3.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.article div #cafe {
+    background-image: url("image/building4.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.article div #is {
+    background-image: url("image/building5.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.article div #agriculture {
+    background-image: url("image/building6.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+@media (max-width: 768px) {
+    .article {
+        min-width: 100%;
+        max-width: 100%;
+        min-height: 100%;
+        max-height: 100%;
+    }
+    .article div {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        flex-direction: column;
+        min-width: 90%;
+        max-width: 100%;
+        min-height: auto;
+        max-height: 100%;
+    }
+}
+footer {
+    width: 100%;
+    background-color: var(--back);
+    box-sizing: border-box;
+    box-shadow: -2px -2px 5px var(--dark);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    /* position: fixed; */
+    bottom: 0;
+    left: 0;
 }
 
-.add-new-container {
-    border-left: 2px solid #000;
-    padding-left: 10px;
+#contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-around;
+    min-height: 20vh;
+    max-height: 100%;
+    min-width: 30%;
+    max-width: 100%;
+}
+.footer i {
+    color: var(--color);
+    font-size: 25px;
+    margin-left: 15px;
+}
+.footer label {
+    color: var(--color);
+    font-size: 25px;
+}
+.footer div {
+    display: inherit;
+    flex-direction: column;
+}
+.footer div {
+    text-align: center;
+}
+.footer #universityInfo,
+.footer #developer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-around;
+    min-height: 20vh;
+    max-height: 100%;
+    width: 20%;
+    color: var(--color);
+    font-size: 25px;
+}
+@media (max-width: 992px) {
+    .footer div i {
+        font-size: 20px;
+    }
+}
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        justify-content: center;
+    }
+    #contact {
+        margin-top: 3%;
+    }
+    #universityInfo,
+    #developer {
+        margin-top: 5%;
+        display: flex;
+        flex-direction: row;
+        width: 40% !important;
+    }
+    #universityInfo div,
+    #developer div {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+@media (max-width: 600px) {
+    .footer div i {
+        font-size: 15px;
+    }
+}
+/* Login page style */
+.loginPage {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    max-height: 100%;
+    background-image: url("image/login.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: column;
+}
+.loginPage form {
+    min-width: 30%;
+    max-width: 30%;
+    min-height: 100vh;
+    max-height: 100%;
+    background-color: var(--dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.loginPage form div {
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.loginPage form div label {
+    font-size: 32px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+.loginPage form div input {
+    width: 90%;
+    height: 40px;
+    border: 5px solid var(--back);
+    border-radius: 20px;
+    border: none;
+}
+.loginPage form div #loginSubmit {
+    min-width: 90%;
+    max-width: 90%;
+    background-color: var(--submit);
+    color: var(--back);
+    height: 40px;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 5px;
+}
+.loginPage form div #loginSubmit:hover {
+    background-color: var(--submitHover);
+    cursor: pointer;
+}
+@media (max-width: 992px) {
+    .loginPage form {
+        min-width: 40%;
+        max-width: 40%;
+    }
+}
+@media (max-width: 768px) {
+    .loginPage form {
+        min-width: 50%;
+        max-width: 50%;
+    }
+}
+@media (max-width: 600px) {
+    .loginPage form {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+/* Contact Page Style */
+#contactPage {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    max-height: 100%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#contactPage form {
+    min-width: 40%;
+    max-width: 40%;
+    min-height: 50vh;
+    max-height: 100%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: var(--dark);
+    box-shadow: 1px 1px 10px var(--dark);
+}
+#contactPage form div {
+    min-width: 90%;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+#contactPage form div input {
+    min-width: 100%;
+    max-width: 100%;
+    border: none;
+    border-radius: 20px;
+    height: 38px;
+    font-size: 20px;
+}
+#contactPage form div textarea {
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 20vh;
+    max-height: 20%;
+    resize: none;
+}
+#contactPage form div label {
+    font-size: 19px;
+}
+#contactPage form div #contactSubmit {
+    background-color: var(--submit);
+    font-size: 24px;
+}
+#contactPage form div #contactSubmit:hover {
+    background-color: var(--submitHover);
+    cursor: pointer;
+}
+@media (max-width: 992px) {
+    #contactPage form {
+        min-width: 50%;
+        max-width: 50%;
+    }
+}
+@media (max-width: 768px) {
+    #contactPage form {
+        min-width: 60%;
+        max-width: 60%;
+    }
+}
+@media (max-width: 600px) {
+    #contactPage form {
+        min-width: 80%;
+        max-width: 80%;
+    }
+}
+
+/* Sign In Page Style */
+#signInPage {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    max-height: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+#signInPage form {
+    display: inherit;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 50%;
+    max-width: 50%;
+    min-height: 100vh;
+    max-height: 100%;
+    box-shadow: 1px 1px 10px var(--dark);
+    background-color: var(--dark);
+}
+#signInPage form div {
+    display: inherit;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 90%;
+    max-width: 90%;
+    margin-bottom: 15px;
+}
+#signInPage form div label {
+    font-size: 20px;
+}
+#signInPage form div input,
+#signInFaculty,
+select {
+    /* min-width: 100%; */
+    max-width: 100%;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
     height: 30px;
-    margin: 0;
-    list-style: none;
+    color: black;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
-
-/* Contact page */
-
-.contact-container {
+#signInPage form div #signInSubmit,
+#editInfoSubmit {
+    background-color: var(--submit);
+    margin-top: 5px;
+}
+#signInPage form div #signInSubmit:hover {
+    background-color: var(--submitHover);
+    cursor: pointer;
+}
+#editInfoSubmit:hover {
+    background-color: var(--submitHover);
+    cursor: pointer;
+}
+@media (max-width: 992px) {
+    #signInPage form {
+        min-width: 60%;
+        max-width: 60%;
+    }
+}
+@media (max-width: 768px) {
+    #signInPage form {
+        min-width: 70%;
+        max-width: 70%;
+    }
+}
+@media (max-width: 600px) {
+    #signInPage form {
+        min-width: 85%;
+        max-width: 85%;
+    }
+}
+/* My Information Style */
+.myInfoContainer {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: calc(100vh - 100px);
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    padding: 50px;
+    /* justify-content: center; */
 }
 
-.contact-paragraph {
-    text-align: start;
+.mytable {
+    height: 70vh;
 }
 
-.contact-unorderedlist {
+.myhome {
+    height: 60vh;
+}
+
+.myInfoContainer div {
+    min-width: 80%;
+    max-width: 80%;
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0 60px;
-    list-style-position: inside;
+    justify-content: space-around;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 2px;
+    box-shadow: 0px 0px 8px var(--dark);
+    padding-left: 10px;
+    color: black;
+    background: #dae1d5;
+}
+.myInfoContainer .myInfoAccount {
+    border-bottom: none;
+}
+.myInfoContainer div a label {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-size: 20px;
+    cursor: pointer;
+}
+.myInfoContainer div a {
+    text-decoration: underline !important;
+}
+.myInfoContainer div label:hover {
+    color: var(--hov);
 }
 
-footer {
-    height: 40px;
-    background-color: #2c2323;
-    padding: 10px;
-    text-align: center;
-    color: #fff;
+/* Activity Page Style */
+.menuNav form {
+    width: 15%;
 }
-
-main {
-    flex-grow: 1;
+.menuNav form input {
+    width: 100%;
+    line-height: 20px;
+    border-radius: 20px;
 }
-
-@media (min-width: 768px) {
-    .navigation {
-        padding: 3px 10vh 4px 10vh;
+@media (max-width: 800px) {
+    .menuNav .activity {
+        display: none;
     }
+    .menuNav form {
+        width: 20%;
+        margin-left: 10px;
+    }
+}
+@media (max-width: 600px) {
+    .menuNav form {
+        width: 30%;
+    }
+}
+
+.myInfoContainer div form {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px var(--dark);
+    padding: 5px;
+    width: 98%;
+    border-radius: 10px;
+}
+.myInfoContainer div form input {
+    margin-top: 10px;
+}
+#answerSubmit {
+    background-color: var(--submit);
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+}
+#answerSubmit:hover {
+    cursor: pointer;
+    background-color: var(--submitHover);
+}
+
+/*Activities page Style */
+.list {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: calc(100vh - 100px);
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.list table {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    max-height: 100%;
+}
+.list table thead tr,
+.list table tbody tr,
+table,
+th,
+td {
+    width: fit-content;
+    border-collapse: collapse;
+}
+th {
+    font-size: 30px;
+    border-bottom: 2px solid var(--back);
+}
+thead tr {
+    background-color: var(--submitHover);
+}
+tr {
+    background-color: rgb(240, 240, 240);
+    text-align: center;
+    height: 20px;
+}
+tr:nth-child(even) {
+    background-color: rgb(220, 220, 220);
+}
+tr:hover {
+    background-color: var(--submitHover);
+}
+@media (max-width: 992px) {
+    .list table thead tr th {
+        font-size: 18px;
+    }
+    .list table tbody tr td a {
+        font-size: 16px;
+    }
+}
+@media (max-width: 768px) {
+    .list table thead tr th {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .list table tbody tr td a {
+        font-size: 15px;
+    }
+}
+@media (max-width: 600px) {
+    .list table thead tr th {
+        font-size: 14px;
+    }
+    .list table tbody tr td a {
+        font-size: 12px;
+    }
+}
+/* Add Activity Style*/
+.activitySubmit {
+    background-color: var(--submit);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.activitySubmit:hover {
+    background-color: var(--submitHover);
+}
+/* edit and delete activity Style*/
+.delete {
+    background-color: var(--delete);
+    cursor: pointer;
+}
+.delete:hover {
+    background-color: var(--deleteHover);
+}
+#descriptionAddActivity {
+    min-width: 95%;
+    max-width: 95%;
+    border-radius: 5px;
+    height: 50vh;
+    max-height: 50vh;
+    min-height: 50vh;
+    resize: none;
+    overflow-y: auto;
+    font-size: 25px;
+}
+
+.mylayout {
+    list-style: none;
+    /* background-color: #d43f3f; */
+    color: black;
 }
