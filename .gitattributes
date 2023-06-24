@@ -1,4 +1,4 @@
-* text=auto eol=lf
+* text=auto
 
 *.blade.php diff=html
 *.css diff=css
@@ -8,4 +8,3 @@
 
 /.github export-ignore
 CHANGELOG.md export-ignore
-.styleci.yml export-ignore
