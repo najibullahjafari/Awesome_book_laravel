@@ -2,7 +2,7 @@
 
 <div align="center">
   <br/>
-To do list
+Awesome book with Laravel 
 
 </div>
 
@@ -42,6 +42,7 @@ It is a library!
 - Bootstrap
 - PHP
 - Laravel
+- Full stack web
 
 ### Tech Stack <a name="tech-stack"></a>
 
